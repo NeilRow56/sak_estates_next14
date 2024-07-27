@@ -19,12 +19,11 @@ enum UserRole {
   }
 
 model User {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id") 
   firstName String
   lastName  String
   role      UserRole   @default(USER)
   email     String     @unique
-  password  String
   colorScheme     String        @default("theme-orange")
   avatarUrl String?
   createdAt DateTime   @default(now())
@@ -38,7 +37,7 @@ model Property {
   name        String
   description String
   price       Int
-  userId      String           @db.ObjectId
+  userId      String           
   user        User             @relation(fields: [userId], references: [id])
   typeId      String           @db.ObjectId    
   type        PropertyType     @relation(fields: [typeId], references: [id])
