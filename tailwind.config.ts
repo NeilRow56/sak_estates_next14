@@ -17,11 +17,7 @@ const config: Config = {
       },
     },
   },
-
   darkMode: "class",
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/forms"),
-    nextui(),
-  ],
+  plugins: [nextui()],
 };
+export default config;
