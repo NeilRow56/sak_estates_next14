@@ -19,7 +19,7 @@ enum UserRole {
   }
 
 model User {
-  id        String   @id @default(cuid()) @map("_id") 
+  id        String   @id @default(cuid()) @map("_id") @db.String
   firstName String
   lastName  String
   role      UserRole   @default(USER)
@@ -37,7 +37,7 @@ model Property {
   name        String
   description String
   price       Int
-  userId      String           
+  userId      String           @db.String
   user        User             @relation(fields: [userId], references: [id])
   typeId      String           @db.ObjectId    
   type        PropertyType     @relation(fields: [typeId], references: [id])
